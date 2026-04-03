@@ -41,3 +41,20 @@ input {
     border: 1px solid #ccc;
     border-radius: 6px;
 }
+
+
+/* some styling for the actual Add button */
+button {
+    background-color: #ff4d88;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* this below will create a simple Hover effect */
+button:hover {
+    background-color: #e6005c;
+}
