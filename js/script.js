@@ -1,7 +1,7 @@
 // Tuguldur Natsagdorj 200585649
 //step 4 and 5
 
-const dingSound = new Audio("sounds/ding.wav");
+const dingSound = new Audio("js/sounds/ding.wav");
 
 //get elements
 const addBtn = document.getElementById("addBtn");
@@ -35,9 +35,8 @@ addBtn.addEventListener("click", function(){
     checkbox.addEventListener("change", function () {
         if (checkbox.checked) {
 
-            dingSound.currentTime = 0;
-dingSound.play();
-          
+           dingSound.currentTime = 0;
+dingSound.play().catch(error => console.log("Sound failed:", error));
             //add line-through
             span.style.textDecoration = "line-through";
           
