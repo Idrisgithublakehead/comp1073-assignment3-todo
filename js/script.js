@@ -8,5 +8,10 @@ const taskList = document.getElementById("taskList");
 
 //add button event
 addBtn.addEventListener("click", function(){
+    const taskText = taskInput.value.trim();
+    //prevent empty taks
+    if (taskText === "") return;
+    //create list
+    const li = document.createElement("li");
     
 });
