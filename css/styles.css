@@ -93,3 +93,15 @@ li span {
     margin-left: 10px;
     color: #333;
 }
+
+
+
+li button {
+    background-color: #999;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+li button:hover {
+    background-color: #666;
+}
