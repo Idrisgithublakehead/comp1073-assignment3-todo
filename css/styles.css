@@ -1,95 +1,188 @@
-/* MAIN Base styling */
+/* ── Google Font ── */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    min-height: 100vh;
+    font-family: 'Nunito', Arial, sans-serif;
+    /* soft warm gradient background */
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a9e 100%);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
 
-
-
-
-/* this is the css for the Main container */
+/* ── Main card ── */
 .container {
-    width: 400px;
-    margin: 80px auto;
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 440px;
+    margin: 70px auto 40px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    padding: 36px 32px 32px;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(255, 100, 100, 0.18),
+                0 2px 8px rgba(0,0,0,0.06);
+    animation: slideDown 0.45s cubic-bezier(.22,1,.36,1) both;
 }
 
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-28px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
 
-
-
+/* ── Heading ── */
 h1 {
     text-align: center;
+    font-size: 1.9rem;
+    font-weight: 800;
     color: #ff4d88;
-    margin-bottom: 20px;
+    margin: 0 0 28px;
+    letter-spacing: -0.5px;
 }
 
-/* Input section */
+h1::before { content: '✅ '; font-size: 1.5rem; }
+
+/* ── Input row ── */
 .input-section {
     display: flex;
     gap: 10px;
+    margin-bottom: 4px;
 }
 
-/* Input box */
-input {
+input[type="text"] {
     flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    padding: 11px 14px;
+    border: 2px solid #f0c0d0;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #333;
+    background: #fff8fb;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
 }
 
+input[type="text"]:focus {
+    border-color: #ff4d88;
+    box-shadow: 0 0 0 3px rgba(255, 77, 136, 0.15);
+}
 
-/* some styling for the actual Add button */
-button {
-    background-color: #ff4d88;
-    color: white;
+input[type="text"]::placeholder { color: #c9a0b0; }
+
+/* ── Add button ── */
+button#addBtn {
+    background: linear-gradient(135deg, #ff4d88, #ff6b6b);
+    color: #fff;
     border: none;
-    padding: 10px 15px;
-    border-radius: 6px;
+    padding: 11px 20px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
+    box-shadow: 0 4px 12px rgba(255, 77, 136, 0.35);
 }
 
-/* this below will create a simple Hover effect */
-button:hover {
-    background-color: #e6005c;
+button#addBtn:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(255, 77, 136, 0.45);
 }
 
+button#addBtn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(255, 77, 136, 0.3);
+}
 
-
-/* Task list */
+/* ── Task list ── */
 ul {
     list-style: none;
     padding: 0;
-    margin-top: 20px;
+    margin: 20px 0 0;
 }
 
-
-/* Task items */
+/* ── Task items ── */
 li {
-    background-color: #f9f9f9;
-    padding: 10px;
+    background: #fff;
+    padding: 12px 14px;
     margin-bottom: 10px;
-    border-radius: 6px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 10px;
+    border: 1.5px solid #f5dde6;
+    box-shadow: 0 2px 6px rgba(255,100,100,0.07);
+    animation: fadeIn 0.3s ease both;
+    transition: box-shadow 0.2s, border-color 0.2s;
 }
 
+li:hover {
+    border-color: #ffb3cb;
+    box-shadow: 0 4px 14px rgba(255, 77, 136, 0.12);
+}
 
+li.completed {
+    background: #fdf5f8;
+    border-color: #f0dce4;
+}
 
-/* this allows for some Checkbox spacing */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* slide-out animation on delete */
+li.removing {
+    animation: fadeOut 0.28s ease forwards;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; transform: translateX(20px) scale(0.95); }
+}
+
+/* ── Checkbox ── */
 li input[type="checkbox"] {
-    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    accent-color: #ff4d88;
+    cursor: pointer;
 }
 
-/* Task text */
+/* ── Task text ── */
 li span {
     flex: 1;
-    margin-left: 10px;
+    font-size: 0.95rem;
     color: #333;
+    word-break: break-word;
+    transition: color 0.2s, opacity 0.2s;
+}
+
+/* ── Delete button ── */
+.delete-btn {
+    background: transparent;
+    color: #e0a0b5;
+    border: 1.5px solid #f0c8d8;
+    padding: 4px 9px;
+    border-radius: 7px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: none;
+    flex-shrink: 0;
+    transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.15s;
+}
+
+.delete-btn:hover {
+    background: #ff4d88;
+    color: #fff;
+    border-color: #ff4d88;
+    transform: scale(1.1);
+    filter: none;
+    box-shadow: none;
 }
