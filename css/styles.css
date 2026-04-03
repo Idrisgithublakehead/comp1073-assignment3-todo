@@ -79,3 +79,17 @@ li {
     align-items: center;
     justify-content: space-between;
 }
+
+
+
+/* this allows for some Checkbox spacing */
+li input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Task text */
+li span {
+    flex: 1;
+    margin-left: 10px;
+    color: #333;
+}
